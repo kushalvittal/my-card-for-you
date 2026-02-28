@@ -11,6 +11,7 @@
             align-items: center;
             font-family: Arial, sans-serif;
             overflow: hidden;
+            margin: 0;
         }
 
         .box {
@@ -56,6 +57,35 @@
             font-weight: bold;
             color: #ff1e56;
         }
+
+        .firework {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: explode 1s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(8);
+                opacity: 0;
+            }
+        }
+
+        .celebration-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            z-index: 10;
+        }
     </style>
 </head>
 
@@ -81,22 +111,39 @@
         noBtn.style.left = x + "px";
         noBtn.style.top = y + "px";
 
-        message.innerText = "Try karlooooo ek baaarrrrriiiii bachhu";
+        message.innerText = "Run away from the click 😜";
     });
 
     function yesClicked() {
         document.body.innerHTML = `
-            <div style="display:flex;justify-content:center;align-items:center;height:100vh;background:linear-gradient(to right,#ff758c,#ff7eb3);color:white;font-family:Arial;text-align:center;">
-                <div>
-                    <h1>See... I knew you trust me 💖</h1>
-                    <h2>You cannot Run bhaktuuuu its godsssss plan!!!!!!!! 😌💕</h2>
-                </div>
+            <div class="celebration-text">
+                <h1>See... I knew you trust me 💖</h1>
+                <h2>You cannot Run bhaktuuuu its godsssss plan!!!!!!!! 😌💕</h2>
             </div>
         `;
+
+        document.body.style.background = "black";
+
+        setInterval(createFirework, 200);
+    }
+
+    function createFirework() {
+        const firework = document.createElement("div");
+        firework.classList.add("firework");
+
+        firework.style.left = Math.random() * window.innerWidth + "px";
+        firework.style.top = Math.random() * window.innerHeight + "px";
+
+        const colors = ["#ff4e78", "#ffd700", "#00ffff", "#ff00ff", "#00ff00", "#ffffff"];
+        firework.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+        document.body.appendChild(firework);
+
+        setTimeout(() => {
+            firework.remove();
+        }, 1000);
     }
 </script>
 
 </body>
 </html>
-
-
