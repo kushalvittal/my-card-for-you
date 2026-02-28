@@ -1,58 +1,99 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>My Card</title>
+    <title>Do You Trust Me? 💕</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
 
-<style>
-.emoji {
-  position: absolute;
-  font-size: 30px;
-  animation: floatUp 3s linear forwards;
-}
+        .box {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
 
-@keyframes floatUp {
-  0% { transform: translateY(0); opacity: 1; }
-  100% { transform: translateY(-300px); opacity: 0; }
-}
-</style>
+        h1 {
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
 
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px;
+            transition: 0.3s;
+        }
+
+        #yesBtn {
+            background-color: #ff4e78;
+            color: white;
+        }
+
+        #yesBtn:hover {
+            background-color: #ff1e56;
+        }
+
+        #noBtn {
+            background-color: #555;
+            color: white;
+            position: absolute;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #ff1e56;
+        }
+    </style>
 </head>
 
-<body style="text-align:center; margin-top:100px; overflow:hidden;">
+<body>
 
-<h1>Hello bhaktuuuuuuuuuuuuuu 🙈</h1>
+<div class="box">
+    <h1>Do you trust me? 💕</h1>
 
-<button onclick="showMessage()">Click Me</button>
+    <button id="yesBtn" onclick="yesClicked()">Yes 😍</button>
+    <button id="noBtn">No 😏</button>
 
-<p id="secret" style="display:none; font-size:20px; color:pink;">
-You are a DIAMOND ❤️
-</p>
+    <div id="message"></div>
+</div>
 
 <script>
-function showMessage() {
+    const noBtn = document.getElementById("noBtn");
+    const message = document.getElementById("message");
 
-  // show the text
-  document.getElementById("secret").style.display = "block";
+    noBtn.addEventListener("mouseover", function() {
+        const x = Math.random() * (window.innerWidth - 100);
+        const y = Math.random() * (window.innerHeight - 50);
 
-  // emoji explosion
-  for (let i = 0; i < 60; i++) {
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
 
-    let emoji = document.createElement("div");
-    emoji.classList.add("emoji");
+        message.innerText = "Run away from the click 😜";
+    });
 
-    // You can change emojis here
-    emoji.innerHTML = "❤️✨🥰💎";
-
-    emoji.style.left = Math.random() * window.innerWidth + "px";
-    emoji.style.top = Math.random() * window.innerHeight + "px";
-
-    document.body.appendChild(emoji);
-
-    setTimeout(() => {
-      emoji.remove();
-    }, 3000);
-  }
-}
+    function yesClicked() {
+        document.body.innerHTML = `
+            <div style="display:flex;justify-content:center;align-items:center;height:100vh;background:linear-gradient(to right,#ff758c,#ff7eb3);color:white;font-family:Arial;text-align:center;">
+                <div>
+                    <h1>See... I knew you trust me 💖</h1>
+                    <h2>You cannot Run bhaktuuuu its godsssss plan!!!!!!!! 😌💕</h2>
+                </div>
+            </div>
+        `;
+    }
 </script>
 
 </body>
